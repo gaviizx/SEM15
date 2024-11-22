@@ -1,31 +1,42 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.11.35222.181
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEM15", "SEM15.csproj", "{AF1A110B-09AA-4C7B-AC33-AD83C50BEE15}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejer2", "..\Ejer2\Ejer2.csproj", "{BED0326E-1321-4371-B598-CE0C2A2EFDEE}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AF1A110B-09AA-4C7B-AC33-AD83C50BEE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF1A110B-09AA-4C7B-AC33-AD83C50BEE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF1A110B-09AA-4C7B-AC33-AD83C50BEE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF1A110B-09AA-4C7B-AC33-AD83C50BEE15}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BED0326E-1321-4371-B598-CE0C2A2EFDEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BED0326E-1321-4371-B598-CE0C2A2EFDEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BED0326E-1321-4371-B598-CE0C2A2EFDEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BED0326E-1321-4371-B598-CE0C2A2EFDEE}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BBD9D968-9211-4948-B0CC-B0CD738D5F2F}
-	EndGlobalSection
-EndGlobal
+using System;
+
+namespace Ejer2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Ingrese # matriz: ");
+            int num = int.Parse(Console.ReadLine());
+
+            int[,] matriz = new int[num, num];
+            int[,] transpuesta = new int[num, num];
+            Random rand = new Random();
+
+            Console.WriteLine("\nMATRIZ ORIGINAL");
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    matriz[i, j] = rand.Next(30, 51);
+                    Console.Write(matriz[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("\nMATRIZ TRANSPUESTA");
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    transpuesta[j, i] = matriz[i, j];
+                }
+            }
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    Console.Write(transpuesta[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+            Console.ReadKey();
